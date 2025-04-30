@@ -1,0 +1,13 @@
+{
+  "name": "@zecodeur/expresso-core",
+  "version": "1.0.0",
+  "main": "bin/index.js",
+  "scripts": {},
+  "bin": {
+    "expresso-core": "bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Expresso Core Package"
+}

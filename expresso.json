@@ -1,0 +1,7 @@
+{
+  "main": "app.js",
+  "tailwind": {
+    "logs": false,
+    "output": "public/css/style.css"
+  }
+}
