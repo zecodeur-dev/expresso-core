@@ -5,6 +5,8 @@ const fs = require("fs");
 const path = require("path");
 
 const command = process.argv[2];
+const commandArgs = process.argv.splice(3);
+const isApi = commandArgs.includes("--api") || commandArgs.includes("-A");
 
 const defaultConfig = require("../expresso.json");
 let config = defaultConfig;
@@ -18,11 +20,13 @@ try {
 class Scripts {
   static server = `nodemon --quiet ${config.main} --config nodemon.json`;
   static tailwindBuild = `tailwindcss -i app/views/global.css -o ${config.tailwind.output} --watch`;
-  static dev = `concurrently ${
-    config.tailwind.logs ? "" : "--raw"
-  } -n "SERVER,TAILWIND" -c "cyan,magenta" "${Scripts.server}" "${
-    Scripts.tailwindBuild
-  }"`;
+  static dev = isApi
+    ? Scripts.server
+    : `concurrently ${
+        config.tailwind.logs ? "" : "--raw"
+      } -n "SERVER,TAILWIND" -c "cyan,magenta" "${Scripts.server}" "${
+        Scripts.tailwindBuild
+      }"`;
   static start = `node ${config.main}`;
 }
 
@@ -32,6 +36,7 @@ if (!Scripts[command]) {
 }
 
 const [cmd, ...args] = Scripts[command].split(" ");
+console.log(cmd,args);
 const child = spawn(cmd, args, { stdio: "inherit", shell: true });
 
 child.on("close", (code) => {
