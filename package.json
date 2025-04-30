@@ -7,7 +7,15 @@
     "expresso-core": "bin/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "ZeCodeur",
   "license": "ISC",
-  "description": "Expresso Core Package"
+  "description": "Expresso Core Package",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zecodeur-dev/expresso-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zecodeur-dev/expresso-core/issues"
+  },
+  "homepage": "https://github.com/zecodeur-dev/expresso-core#readme"
 }
