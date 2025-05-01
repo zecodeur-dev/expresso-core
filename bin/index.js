@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { exec, spawn } = require("child_process");
+const { spawn } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
@@ -36,7 +36,6 @@ if (!Scripts[command]) {
 }
 
 const [cmd, ...args] = Scripts[command].split(" ");
-console.log(cmd,args);
 const child = spawn(cmd, args, { stdio: "inherit", shell: true });
 
 child.on("close", (code) => {
